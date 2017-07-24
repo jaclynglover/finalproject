@@ -12,4 +12,36 @@
  Text Domain:  retina-child
 */
 
+.site-title {
+  font-size: 70px;
+  font-family: Palatino;
+  font-weight: 650;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+.site-description {
+  color: #424949;
+}
+
+.site-primary-menu-responsive .primary-menu-responsive-close:hover {
+  color: #4cd9d9;
+}
+
+a:hover, a:focus, a:active {
+  color: #4cd9d9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Garamond, serif;
+}
+
+.site-content {
+  font-family: "Trebuchet MS", sans-serif;
+  margin: 0;
+  padding: 15px 0;
+  padding: 0.9375rem 0;
+}
+
 
