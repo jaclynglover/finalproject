@@ -14,8 +14,9 @@
 
 .site-title {
   font-size: 70px;
-  font-family: "Palatino";
-  font-weight: 650;
+  font-family: "Cardo";
+  text-transform: none;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
@@ -25,34 +26,50 @@
   color: #424949;
 }
 
-.site-primary-menu-responsive .primary-menu-responsive-close:hover {
-  color: #4cd9d9;
-}
-
- .main-navigation {
+.main-navigation {
     background-color: #DC5D5D;
     display: block;
     position: relative;
     width: 100%;
     z-index: 3;
+}
 
-a:hover, a:focus, a:active {
-  color: #4cd9d9;
+button:hover, button:focus, button:active,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="button"]:active,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:active {
+  background: #d94c4c;
+  color: white;
+  outline: none;
+}
+
+.toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
+  color: white;
+}
+
+.site-primary-menu-responsive .primary-menu-responsive-close:hover {
+  color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Garamond, serif;
+  font-family: "Cardo", serif;
 }
 
 .site-content {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Heebo", sans-serif;
   margin: 0;
   padding: 15px 0;
   padding: 0.9375rem 0;
 }
 
 .widget-title {
-  font-family: "Palatino";
+  font-family: "Cardo";
   text-transform: none;
 }
 
