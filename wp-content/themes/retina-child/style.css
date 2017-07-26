@@ -14,7 +14,7 @@
 
 .site-title {
   font-size: 70px;
-  font-family: Palatino;
+  font-family: "Palatino";
   font-weight: 650;
   margin: 0;
   padding: 0;
@@ -28,6 +28,13 @@
 .site-primary-menu-responsive .primary-menu-responsive-close:hover {
   color: #4cd9d9;
 }
+
+ .main-navigation {
+    background-color: #DC5D5D;
+    display: block;
+    position: relative;
+    width: 100%;
+    z-index: 3;
 
 a:hover, a:focus, a:active {
   color: #4cd9d9;
@@ -44,4 +51,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.9375rem 0;
 }
 
+.widget-title {
+  font-family: "Palatino";
+  text-transform: none;
+}
 
