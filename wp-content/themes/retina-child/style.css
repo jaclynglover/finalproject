@@ -64,13 +64,14 @@ input[type="reset"]:active,
 input[type="submit"]:hover,
 input[type="submit"]:focus,
 input[type="submit"]:active {
-  background: #C34444;
+  background: #000151;
   color: white;
   outline: none;
 }
 
 a:hover, a:focus, a:active {
-  color: #C34444;
+  color: #000151;
+  border: #000151;
 }
 
 /* read more button */
@@ -81,12 +82,10 @@ a:hover, a:focus, a:active {
 
 .more-link, .more-link:visited {
   background: #D73F65;
-  color: #fff;
 }
 
 .more-link:hover, .more-link:focus, .more-link:active {
   background: #000151;
-  color: #fff;
 }
 
 /* headings */
@@ -101,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-title a:hover,
 .page-title a:focus,
 .page-title a:active {
-  color: #C34444;
+  color: #D73F65;
 }
 
 .sf-menu li.current_page_item > a,
@@ -120,11 +119,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
-  color: #C34444;
+  color: #D73F65;
 }
 
 .site-primary-menu-responsive .primary-menu-responsive-close:hover {
-  color: #C34444;
+  color: #D73F65;
 }
 
 /* content */
@@ -146,8 +145,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-form .search-submit {
   background: #D73F65;
+  border: #D73F65;
 }
 
 .search-form .search-submit:hover {
   background: #000151;
 }
+
+/* comments */
+
+div#respond .required {
+  color: #c0392b;
+}
+
+div#respond #cancel-comment-reply-link {
+  color: #c0392b;
