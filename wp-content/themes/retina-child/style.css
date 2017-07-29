@@ -11,26 +11,47 @@
  Text Domain:  retina-child
 */
 
+/* site title styles */
+
 .site-title {
-  font-size: 70px;
-  font-family: "Cardo";
+  font-size: 85px;
+  font-family: "Bentham";
+  font-weight: 500;
   text-transform: none;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
   word-wrap: break-word;
 }
 
-.site-description {
-  color: #323232;
+.site-title a, .site-title a:visited {
+  color: #000151;
+  text-decoration: none;
 }
 
+.site-title a:hover, .site-title a:focus, .site-title a:active {
+  color: #666;
+}
+
+.site-description {
+  color: #808080;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+/* menu */
+
 .main-navigation {
-    background-color: #DC5D5D;
-    display: block;
-    position: relative;
-    width: 100%;
-    z-index: 3;
+  background-color: #000151;
+}
+
+/* button styles */
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background: #D73F65;
+  border: 1px solid #D73F65;
+  border-bottom: 3px solid #D73F65;
 }
 
 button:hover, button:focus, button:active,
@@ -43,36 +64,90 @@ input[type="reset"]:active,
 input[type="submit"]:hover,
 input[type="submit"]:focus,
 input[type="submit"]:active {
-  background: #000000;;
+  background: #C34444;
   color: white;
   outline: none;
 }
 
 a:hover, a:focus, a:active {
-  color: #000000;
+  color: #C34444;
 }
 
+/* read more button */
 
-.toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
-  color: #000000;
+.more-link-wrapper {
+  text-align: center;
 }
 
-.site-primary-menu-responsive .primary-menu-responsive-close:hover {
-  color: #000000;
+.more-link, .more-link:visited {
+  background: #D73F65;
+  color: #fff;
 }
+
+.more-link:hover, .more-link:focus, .more-link:active {
+  background: #000151;
+  color: #fff;
+}
+
+/* headings */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Cardo", serif;
 }
 
-.site-content {
-  font-family: "Heebo", sans-serif;
-  margin: 0;
-  padding: 15px 0;
-  padding: 0.9375rem 0;
+/* post title hover color */
+
+.entry-title a:hover, .entry-title a:focus, .entry-title a:active,
+.page-title a:hover,
+.page-title a:focus,
+.page-title a:active {
+  color: #C34444;
 }
 
-.widget-title {
-  font-family: "Cardo";
-  text-transform: none;
+.sf-menu li.current_page_item > a,
+.sf-menu li.current-menu-item > a,
+.sf-menu li.current_page_ancestor > a,
+.sf-menu li.current-menu-ancestor > a,
+.sf-menu li.current_page_parent > a,
+.sf-menu li.current-menu-parent > a {
+  color: #D73F65;
+}
+
+.sf-menu a:hover,
+.sf-menu a:focus,
+.sf-menu a:active {
+  color: #D73F65;
+}
+
+.toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
+  color: #C34444;
+}
+
+.site-primary-menu-responsive .primary-menu-responsive-close:hover {
+  color: #C34444;
+}
+
+/* content */
+
+.site-content {
+  font-family: "Heebo", sans-serif;
+}
+
+/* widgets */
+
+.widget .widget-title {
+  color: #020202;
+  font-family: "Cardo", serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+/* search widget */
+
+.search-form .search-submit {
+  background: #D73F65;
+}
+
+.search-form .search-submit:hover {
+  background: #000151;
 }
