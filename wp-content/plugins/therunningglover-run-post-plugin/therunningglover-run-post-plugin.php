@@ -2,24 +2,33 @@
 /* http://www.wpbeginner.com/beginners-guide/what-why-and-how-tos-of-creating-a-site-specific-wordpress-plugin/
 Plugin Name: Custom Post Run Plugin for www.therunningglover.com
 Description: Custom Post Type for "The Running (G)lover" Website
+Version: 1.0
 Author: Jaclyn Glover
-Author URI: www.therunningglover.com
+Author URI: http://www.therunningglover.com
+Text domain: therunningglover-run-post-plugin
 */
 
-// below portion of code based on WordPress codex at https://codex.wordpress.org/Post_Types
+// below portion of code based on WordPress codex at https://codex.wordpress.org/Post_Types and Andrew Spittle's reading list at https://github.com/andrewspittle/reading-list/blob/master/index.php
+
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
   register_post_type( 'glover_run',
     array(
       'labels' => array(
-        'name' => __( 'Run' ),
-        'singular_name' => __( 'Run' ),
+        'name' => __( 'Run', 'runlog'),
+        'singular_name' => __( 'Run', 'runlog' ),
+        'search_items' => __( 'Search Runs', 'runlog' ),
+        'all_items' => __( 'All Runs', 'runlog' ),
+        'edit_item' => __( 'Edit Run', 'runlog' ),
+        'update_item' => __( 'Update Run', 'runlog' ),
+        'add_new_item' => __( 'Add New Run', 'runlog' ),
+        'menu_name' => __( 'Run', 'runlog' ),
       ),
       'public' => true,
-      'show_in_menu' => true,
+      'menu_position' => 20,
       'has_archive' => true,
       'taxonomies' => array('category', 'post_tag'),
-      'supports' => array('title','editor','author','excerpt','comments','revisions'),
+      'supports' => array('title', 'thumbnail', 'editor', ' author', 'comments'),
       'rewrite' => array('slug' => 'run'),
     )
   );
@@ -40,19 +49,46 @@ function custom_meta_box_markup($object)
   
   ?>
     <div>
-      <label for="neighborhood_meta_box_text">Neighborhood</label>
-      <input name="neighborhood_meta_box_text" type="text" value="<?php echo get_post_meta($object->ID, "neighborhood-box-text", true); ?>">
+      <label for="neighborhood_box_text">Neighborhood</label>
+      <input name="neighborhood_box_text" type="text" value="<?php echo get_post_meta($object->ID, "neighborhood-box-text", true); ?>">
 
       <br>
 
-      <label for="date_meta_box_text">Date</label>
-      <input name="date_meta_box_text" type="text" value="<?php echo get_post_meta($object->ID, "date-box-text", true); ?>">
+      <label for="date_box_text">Date</label>
+      <input name="date_box_text" type="text" value="<?php echo get_post_meta($object->ID, "date-box-text", true); ?>">
 
       <br>
 
-      <label for="time_meta_box_text">Time</label>
-      <input name="time_meta_box_text" type="text" value="<?php echo get_post_meta($object->ID, "time-box-text", true); ?>">
+      <label for="time_box_text">Time</label>
+      <input name="time_box_text" type="text" value="<?php echo get_post_meta($object->ID, "time-box-text", true); ?>">
     </div>
   <?php    
+
+function save_custom_meta_box($post_id, $post, $update)
+{
+    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
+        return $post_id;
+
+    if(!current_user_can("edit_post", $post_id))
+        return $post_id;
+
+    if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
+        return $post_id;
+
+    $slug = "post";
+    if($slug != $post->glover_run)
+        return $post_id;
+
+    $meta_box_text_value = "";
+
+    if(isset($_POST["neighborhood-box-text"]))
+    {
+        $meta_box_text_value = $_POST["neighborhood-box-text"];
+    }   
+    update_post_meta($post_id, "neighborhood-box-text", $meta_box_text_value);
 }
+
+add_action("save_post", "save_custom_meta_box", 10, 3);
+}
+
 ?>
