@@ -1,11 +1,10 @@
 /*
  Theme Name:   Retina Child
- Theme URI:    http://www.therunningglover.com
  Description:  Retina Child Theme
  Author:       Jaclyn Glover
  Author URI:   http://www.therunningglover.com
  Template:     retina
- Version:      1.0.3
+ Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, blog, news, photography, portfolio
@@ -23,7 +22,7 @@
 }
 
 .site-description {
-  color: #424949;
+  color: #323232;
 }
 
 .main-navigation {
@@ -44,17 +43,22 @@ input[type="reset"]:active,
 input[type="submit"]:hover,
 input[type="submit"]:focus,
 input[type="submit"]:active {
-  background: #d94c4c;
+  background: #000000;;
   color: white;
   outline: none;
 }
 
+a:hover, a:focus, a:active {
+  color: #000000;
+}
+
+
 .toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
-  color: white;
+  color: #000000;
 }
 
 .site-primary-menu-responsive .primary-menu-responsive-close:hover {
-  color: white;
+  color: #000000;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -72,4 +76,3 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Cardo";
   text-transform: none;
 }
-
