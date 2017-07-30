@@ -32,15 +32,18 @@
 
 .site-description {
   color: #808080;
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
+  font-size: 22px;
+  font-family: "Heebo";
 }
 
-/* menu */
+/* navigation menu */
 
 .main-navigation {
   background-color: #000151;
+}
+
+.sf-menu ul {
+  font-size: 14px;
 }
 
 /* button styles */
@@ -65,8 +68,8 @@ input[type="submit"]:hover,
 input[type="submit"]:focus,
 input[type="submit"]:active {
   background: #000151;
+  border: #000151;
   color: white;
-  outline: none;
 }
 
 a:hover, a:focus, a:active {
@@ -94,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Cardo", serif;
 }
 
-/* post title hover color */
+/* hover colors */
 
 .entry-title a:hover, .entry-title a:focus, .entry-title a:active,
 .page-title a:hover,
@@ -126,10 +129,24 @@ h1, h2, h3, h4, h5, h6 {
   color: #D73F65;
 }
 
-/* content */
+/* site content */
 
 .site-content {
   font-family: "Heebo", sans-serif;
+}
+
+/* post entry styles */
+
+.entry-meta a:hover, .entry-meta a:focus, .entry-meta a:active {
+  color: #000151;
+}
+
+.entry-meta .posted-on a, .entry-meta .posted-on a:visited {
+  color: #D73F65;
+}
+
+.entry-meta .posted-on a:hover, .entry-meta .posted-on a:focus, .entry-meta .posted-on a:active {
+  color: #000151;
 }
 
 /* widgets */
@@ -160,3 +177,10 @@ div#respond .required {
 
 div#respond #cancel-comment-reply-link {
   color: #c0392b;
+}
+
+/* site info footer */
+
+.site-info {
+  background: #000151;
+}
