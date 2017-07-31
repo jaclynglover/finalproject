@@ -17,8 +17,8 @@
   font-size: 85px;
   font-family: "Bentham";
   font-weight: 500;
+  padding-top: 40px;
   text-transform: none;
-  word-wrap: break-word;
 }
 
 .site-title a, .site-title a:visited {
@@ -27,7 +27,7 @@
 }
 
 .site-title a:hover, .site-title a:focus, .site-title a:active {
-  color: #666;
+  color: #5C5C5C;
 }
 
 .site-description {
@@ -36,10 +36,12 @@
   font-family: "Heebo";
 }
 
-/* navigation menu */
+/* main navigation menu */
 
 .main-navigation {
   background-color: #000151;
+  position: fixed;
+  top: 0;
 }
 
 .sf-menu ul {
@@ -112,13 +114,13 @@ h1, h2, h3, h4, h5, h6 {
 .sf-menu li.current-menu-ancestor > a,
 .sf-menu li.current_page_parent > a,
 .sf-menu li.current-menu-parent > a {
-  color: #D73F65;
+  color: #e2748f;
 }
 
 .sf-menu a:hover,
 .sf-menu a:focus,
 .sf-menu a:active {
-  color: #D73F65;
+  color: #e2748f;
 }
 
 .toggle-menu-wrapper a:hover, .toggle-menu-wrapper a:focus, .toggle-menu-wrapper a:active {
@@ -147,6 +149,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .entry-meta .posted-on a:hover, .entry-meta .posted-on a:focus, .entry-meta .posted-on a:active {
   color: #000151;
+}
+
+.post-navigation .meta-nav {
+  color: #D73F65;
 }
 
 /* widgets */
