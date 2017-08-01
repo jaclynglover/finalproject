@@ -49,18 +49,18 @@ function custom_meta_box_markup($object)
   
   ?>
     <div>
-      <label for="neighborhood_box_text">Neighborhood</label>
-      <input name="neighborhood_box_text" type="text" value="<?php echo get_post_meta($object->ID, "neighborhood-box-text", true); ?>">
-
-      <br>
-
-      <label for="date_box_text">Date</label>
-      <input name="date_box_text" type="text" value="<?php echo get_post_meta($object->ID, "date-box-text", true); ?>">
-
-      <br>
-
-      <label for="time_box_text">Time</label>
-      <input name="time_box_text" type="text" value="<?php echo get_post_meta($object->ID, "time-box-text", true); ?>">
+      <p>
+        <label for="neighborhood_box_text">Neighborhood</label>
+        <input name="neighborhood_box_text" type="text" value="<?php echo get_post_meta($object->ID, "neighborhood-box-text", true); ?>">
+      </p>
+      <p>
+        <label for="date_box_text">Date</label>
+        <input name="date_box_text" type="text" value="<?php echo get_post_meta($object->ID, "date-box-text", true); ?>">
+      </p>
+      <p>
+        <label for="time_box_text">Time</label>
+        <input name="time_box_text" type="text" value="<?php echo get_post_meta($object->ID, "time-box-text", true); ?>">
+      </p>
     </div>
   <?php    
 
