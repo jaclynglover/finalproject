@@ -1,5 +1,5 @@
 <?php
-/* http://www.wpbeginner.com/beginners-guide/what-why-and-how-tos-of-creating-a-site-specific-wordpress-plugin/
+/* 
 Plugin Name: Custom Post Run Plugin for www.therunningglover.com
 Description: Custom Post Type for "The Running (G)lover" Website
 Version: 1.0
