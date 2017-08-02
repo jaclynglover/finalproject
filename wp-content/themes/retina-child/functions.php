@@ -22,6 +22,18 @@ function add_my_post_types_to_query( $query ) {
   return $query;
 }
 
+// code below from https://developer.wordpress.org/themes/template-files-section/custom-post-type-template-files/
+
+function search_filter( $query ) {
+  if ( !is_admin() && $query->is_main_query() ) {
+    if ( $query->is_search ) {
+      $query->set( 'post_type', array( 'post', 'page', 'glover_run' ) );
+    }
+  }
+}
+ 
+add_action( 'pre_get_posts','search_filter' );
+
 // Google Fonts enqueue code below is from https://www.tipsandtricks-hq.com/how-to-easily-add-google-web-fonts-to-your-wordpress-theme-4915
 
 function load_google_fonts() {
