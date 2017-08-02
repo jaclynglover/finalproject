@@ -12,15 +12,15 @@ Text domain: trg-run-post-plugin
 add_action( 'init', 'trgrun_create_post_type' );
 function trgrun_create_post_type() {
 	$labels = array(
-		'name' 							=> __( 'Run', 'runlog' ),
-		'singular_name' 				=> __( 'Run', 'runlog' ),
-		'search_items'					=> __( 'Search Runs', 'runlog' ),
-		'all_items'						=> __( 'All Runs', 'runlog' ),
-		'edit_item'						=> __( 'Edit Run', 'runlog' ),
-		'update_item' 					=> __( 'Update Run', 'runlog' ),
-		'add_new_item' 					=> __( 'Add New Run', 'runlog' ),
-		'new_item_name' 				=> __( 'New Run', 'runlog' ),
-		'menu_name' 					=> __( 'Run', 'runlog' ),
+		'name' 							=> __( 'Run' ),
+		'singular_name' 				=> __( 'Run' ),
+		'search_items'					=> __( 'Search Runs' ),
+		'all_items'						=> __( 'All Runs' ),
+		'edit_item'						=> __( 'Edit Run' ),
+		'update_item' 					=> __( 'Update Run' ),
+		'add_new_item' 					=> __( 'Add New Run' ),
+		'new_item_name' 				=> __( 'New Run' ),
+		'menu_name' 					=> __( 'Run' ),
 	);
 
 	$args = array (
@@ -45,24 +45,23 @@ function trg_add_details_meta()
 
 function trg_details_meta_cb($post)
 {
-  
-    $neighborhood = get_post_meta( $post->ID, '_trg_details_neighborhood', true );
-    $date = get_post_meta( $post->ID, '_trg_details_date', true );
-    $time = get_post_meta( $post->ID, '_trg_details_time', true );
+    $neighborhood = get_post_meta( $post->ID, 'trg_details_neighborhood', true );
+    $date = get_post_meta( $post->ID, 'trg_details_date', true );
+    $time = get_post_meta( $post->ID, 'trg_details_time', true );
      
     wp_nonce_field( 'save_details_meta', 'details_nonce' );
     ?>
     <p>
         <label for="details-neighborhood">Neighborhood</label>
-        <input type="text" id="details-neighborhood" name="_trg_details_neighborhood" value="<?php echo $neighborhood; ?>" />
+        <input type="text" id="details-neighborhood" name="trg_details_neighborhood" value="<?php echo $neighborhood; ?>" />
     </p>
     <p>
         <label for="details-date">Date</label>
-        <input type="text" id="details-date" name="_trg_details_date" value="<?php echo $date; ?>" />
+        <input type="text" id="details-date" name="trg_details_date" value="<?php echo $date; ?>" />
     </p>
     <p>
         <label for="details-time">Time</label>
-        <input type="text" id="details-time" name="_trg_details_time" value="<?php echo $time; ?>" />
+        <input type="text" id="details-time" name="trg_details_time" value="<?php echo $time; ?>" />
     </p>
     <?php    
 }
@@ -80,13 +79,54 @@ function trg_details_meta_save( $id )
         'p' => array()
     );
      
-    if( isset( $_POST['_trg_details_neighborhood'] ) )
-        update_post_meta( $id, '_trg_details_neighborhood', wp_kses( $_POST['_trg_details_neighborhood'], $allowed ) );
+    if( isset( $_POST['trg_details_neighborhood'] ) )
+        update_post_meta( $id, 'trg_details_neighborhood', wp_kses( $_POST['trg_details_neighborhood'], $allowed ) );
      
-    if( isset( $_POST['_trg_details_date'] ) )
-        update_post_meta( $id, '_trg_details_date', esc_attr( strip_tags( $_POST['_trg_details_date'] ) ) );
+    if( isset( $_POST['trg_details_date'] ) )
+        update_post_meta( $id, 'trg_details_date', esc_attr( strip_tags( $_POST['trg_details_date'] ) ) );
          
-    if( isset( $_POST['_trg_details_time'] ) )
-        update_post_meta( $id, '_trg_details_time', esc_attr( strip_tags( $_POST['_trg_details_time'] ) ) );   
+    if( isset( $_POST['trg_details_time'] ) )
+        update_post_meta( $id, 'trg_details_time', esc_attr( strip_tags( $_POST['trg_details_time'] ) ) );   
 }
+
+add_filter( 'the_content', 'trg_display_neighborhood' );
+function trg_display_neighborhood( $content )
+{
+    // We only want this on single posts, bail if we're not in a single post
+    if( !is_single() ) return $content;
+}
+
+add_filter( 'the_content', 'trg_display_neighborhood' );
+function cd_display_neighborhood( $content )
+{   
+    // We only want this on single posts, bail if we're not in a single post
+    if( !is_single() ) return $content;
+     
+    // We're in the loop, so we can grab the $post variable
+    global $post;
+     
+    $neighborhood = get_post_meta( $post->ID, 'trg_details_neighborhood', true );
+     
+    // Bail if we don't have a quote;
+    if( empty( $quote ) ) return $content;
+
+    $date = get_post_meta( $post->ID, 'trg_details_date', true );
+    $time = get_post_meta( $post->ID, 'trg_details_time', true );
+     
+    $out = '<blockquote>' . $neighborhood;
+    if( !empty( $date ) )
+    {
+        $out .= '<p class="details-date">-' . $date;
+     
+        if( !empty( $time ) )
+            $out .= ' (' . $time . ')';
+         
+        $out .= '</p>';       
+    }
+     
+    $out .= '</blockquote>';
+
+     return $out . $content;
+}
+
 ?>
