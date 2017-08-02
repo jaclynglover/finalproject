@@ -34,6 +34,21 @@ function search_filter( $query ) {
  
 add_action( 'pre_get_posts','search_filter' );
 
+// following code from http://www.wpbeginner.com/wp-tutorials/how-to-add-categories-to-a-custom-post-type-in-wordpress/
+
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+  if( is_category() ) {
+    $post_type = get_query_var('post_type');
+    if($post_type)
+        $post_type = $post_type;
+    else
+        $post_type = array('nav_menu_item', 'post', 'glover_run'); 
+    $query->set('post_type',$post_type);
+    return $query;
+    }
+}
+
 // Google Fonts enqueue code below is from https://www.tipsandtricks-hq.com/how-to-easily-add-google-web-fonts-to-your-wordpress-theme-4915
 
 function load_google_fonts() {
