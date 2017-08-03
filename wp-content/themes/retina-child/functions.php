@@ -52,7 +52,7 @@ function query_post_type($query) {
 // Google Fonts enqueue code below is from https://www.tipsandtricks-hq.com/how-to-easily-add-google-web-fonts-to-your-wordpress-theme-4915
 
 function load_google_fonts() {
-wp_register_style('googleWebFonts', 'http://fonts.googleapis.com/css?family=Bentham|Lato|Cardo|Heebo');
+wp_register_style('googleWebFonts', 'http://fonts.googleapis.com/css?family=Lato|Cardo|Heebo');
 wp_enqueue_style('googleWebFonts');
 }
 
