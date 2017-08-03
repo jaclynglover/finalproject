@@ -49,7 +49,7 @@ function prfx_meta_callback($post) {
  
     <p>
         <label for="meta-box-text" class="prfx-row-title"><?php _e('Neighborhood', 'prfx-textdomain')?></label>
-        <input type="text" name="meta-box-text" id="meta-box-text" value="<?php if (isset($prfx_stored_meta['meta-box-text'])) echo $prfx_stored_meta['meta-box-text'][0]; ?>" />
+        <input type="text" name="meta-box-text" class="widefat" id="meta-box-text" value="<?php if (isset($prfx_stored_meta['meta-box-text'])) echo $prfx_stored_meta['meta-box-text'][0]; ?>" />
     </p>
  
     <?php
