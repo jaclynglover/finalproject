@@ -34,7 +34,7 @@ function search_filter( $query ) {
  
 add_action( 'pre_get_posts','search_filter' );
 
-// following code from http://www.wpbeginner.com/wp-tutorials/how-to-add-categories-to-a-custom-post-type-in-wordpress/
+// following code modified from http://www.wpbeginner.com/wp-tutorials/how-to-add-categories-to-a-custom-post-type-in-wordpress/
 
 add_filter('pre_get_posts', 'query_post_type');
 function query_post_type($query) {
