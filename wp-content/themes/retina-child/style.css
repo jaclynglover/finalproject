@@ -14,11 +14,12 @@
 /* site title styles */
 
 .site-title {
-  font-size: 85px;
-  font-family: "Bentham";
+  font-size: 80px;
+  font-family: "Lato";
   font-weight: 500;
-  padding-top: 40px;
-  text-transform: none;
+  letter-spacing: 2px;
+  padding-top: 35px;
+  text-transform: uppercase;
 }
 
 .site-title a, .site-title a:visited {
@@ -32,8 +33,8 @@
 
 .site-description {
   color: #808080;
-  font-size: 22px;
-  font-family: "Heebo";
+  font-size: 24px;
+  font-family: "Cardo";
 }
 
 /* main navigation menu */
