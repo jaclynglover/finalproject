@@ -34,61 +34,41 @@ function create_post_type() {
   );
 }
 
-// below portion of code based on example from https://www.sitepoint.com/adding-custom-meta-boxes-to-wordpress/
+// following block of code modeled after https://themefoundation.com/wordpress-meta-boxes-guide/
 
-function add_custom_meta_box()
-{
-  add_meta_box("run-meta-box", "Run Details", "custom_meta_box_markup", "glover_run", "side", "high", null);
+function prfx_custom_meta() {
+    add_meta_box( 'prfx_meta', __('Run Details', 'prfx-textdomain'), 'prfx_meta_callback', 'glover_run', 'side', 'high', null);
 }
 
-add_action("add_meta_boxes", "add_custom_meta_box");
+add_action('add_meta_boxes', 'prfx_custom_meta');
 
-function custom_meta_box_markup($object)
-{
-  wp_nonce_field(basename(__FILE__), "meta-box-nonce");
-  
+function prfx_meta_callback($post) {
+  wp_nonce_field( basename(__FILE__), 'prfx_nonce');
+  $prfx_stored_meta = get_post_meta($post->ID);
   ?>
-    <div>
-      <p>
-        <label for="neighborhood_box_text">Neighborhood</label>
-        <input name="neighborhood_box_text" type="text" value="<?php echo get_post_meta($object->ID, "neighborhood-box-text", true); ?>">
-      </p>
-      <p>
-        <label for="date_box_text">Date</label>
-        <input name="date_box_text" type="text" value="<?php echo get_post_meta($object->ID, "date-box-text", true); ?>">
-      </p>
-      <p>
-        <label for="time_box_text">Time</label>
-        <input name="time_box_text" type="text" value="<?php echo get_post_meta($object->ID, "time-box-text", true); ?>">
-      </p>
-    </div>
-  <?php    
-
-function save_custom_meta_box($post_id, $post, $update)
-{
-    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
-        return $post_id;
-
-    if(!current_user_can("edit_post", $post_id))
-        return $post_id;
-
-    if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
-        return $post_id;
-
-    $slug = "post";
-    if($slug != $post->glover_run)
-        return $post_id;
-
-    $meta_box_text_value = "";
-
-    if(isset($_POST["neighborhood-box-text"]))
-    {
-        $meta_box_text_value = $_POST["neighborhood-box-text"];
-    }   
-    update_post_meta($post_id, "neighborhood-box-text", $meta_box_text_value);
+ 
+    <p>
+        <label for="meta-box-text" class="prfx-row-title"><?php _e('Neighborhood', 'prfx-textdomain')?></label>
+        <input type="text" name="meta-box-text" id="meta-box-text" value="<?php if (isset($prfx_stored_meta['meta-box-text'])) echo $prfx_stored_meta['meta-box-text'][0]; ?>" />
+    </p>
+ 
+    <?php
 }
 
-add_action("save_post", "save_custom_meta_box", 10, 3);
+function prfx_meta_save($post_id) {
+  $is_autosave = wp_is_post_autosave($post_id);
+  $is_revision = wp_is_post_revision($post_id);
+  $is_valid_nonce = (isset($_POST['prfx_nonce']) && wp_verify_nonce($_POST['prfx_nonce'], basename(__FILE__))) ? 'true' : 'false';
+ 
+  if ($is_autosave || $is_revision || !$is_valid_nonce) {
+      return;
+  }
+   
+  if(isset($_POST['meta-box-text'])) {
+      update_post_meta( $post_id, 'meta-box-text', sanitize_text_field($_POST['meta-box-text']));
+  } 
 }
+
+add_action('save_post', 'prfx_meta_save');
 
 ?>
