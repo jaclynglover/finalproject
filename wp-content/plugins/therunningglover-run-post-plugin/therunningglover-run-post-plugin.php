@@ -46,6 +46,7 @@ function prfx_meta_callback($post) {
   wp_nonce_field( basename(__FILE__), 'prfx_nonce');
   $prfx_stored_meta = get_post_meta($post->ID);
   ?>
+
     <div>
       <p>
         <label for="meta-box-text" class="prfx-row-title"><?php _e('Neighborhood', 'prfx-textdomain')?></label>
@@ -59,8 +60,12 @@ function prfx_meta_callback($post) {
         <label for="time-box-text" class="prfx-row-title"><?php _e('Time', 'prfx-textdomain')?></label>
         <input type="text" name="time-box-text" class="widefat" id="time-box-text" value="<?php if (isset($prfx_stored_meta['time-box-text'])) echo $prfx_stored_meta['time-box-text'][0]; ?>" />
       </p>
+      <p>
+        <label for="distance-box-text" class="prfx-row-title"><?php _e('Distance', 'prfx-textdomain')?></label>
+        <input type="text" name="distance-box-text" class="widefat" id="distance-box-text" value="<?php if (isset($prfx_stored_meta['distance-box-text'])) echo $prfx_stored_meta['distance-box-text'][0]; ?>" />
+      </p>
     </div>
- 
+
     <?php
 }
 
@@ -77,6 +82,7 @@ function prfx_meta_save($post_id) {
     update_post_meta( $post_id, 'meta-box-text', sanitize_text_field($_POST['meta-box-text']));
     update_post_meta( $post_id, 'date-box-text', sanitize_text_field($_POST['date-box-text']));
     update_post_meta( $post_id, 'time-box-text', sanitize_text_field($_POST['time-box-text']));
+    update_post_meta( $post_id, 'distance-box-text', sanitize_text_field($_POST['distance-box-text']));
   } 
 }
 
