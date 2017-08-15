@@ -12,24 +12,24 @@ Text domain: trg-run-post-plugin
 add_action( 'init', 'trgrun_create_post_type' );
 function trgrun_create_post_type() {
 	$labels = array(
-		'name' 			=> __( 'Run' ),
+		'name' => __( 'Run' ),
 		'singular_name' => __( 'Run' ),
-		'search_items'	=> __( 'Search Runs' ),
-		'all_items'		=> __( 'All Runs' ),
-		'edit_item'		=> __( 'Edit Run' ),
-		'update_item' 	=> __( 'Update Run' ),
-		'add_new_item' 	=> __( 'Add New Run' ),
+		'search_items' => __( 'Search Runs' ),
+		'all_items' => __( 'All Runs' ),
+		'edit_item'	=> __( 'Edit Run' ),
+		'update_item' => __( 'Update Run' ),
+		'add_new_item' => __( 'Add New Run' ),
 		'new_item_name' => __( 'New Run' ),
-		'menu_name' 	=> __( 'Run' ),
+		'menu_name' => __( 'Run' ),
 	);
 
 	$args = array (
-		'labels' 		=> $labels,
-		'public' 		=> true,
+	    'labels' => $labels,
+		'public' => true,
 		'menu_position' => 20,
-		'has_archive' 	=> true,
-		'rewrite'		=> array( 'slug' => 'run' ),
-		'supports' 		=> array( 'title', 'thumbnail', 'editor' )
+		'has_archive' => true,
+		'rewrite' => array( 'slug' => 'run' ),
+		'supports' => array( 'title', 'thumbnail', 'editor' )
 	);
 
 	register_post_type( 'trg_run', $args );
