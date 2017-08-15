@@ -75,7 +75,7 @@ function prfx_meta_save($post_id) {
   $is_valid_nonce = (isset($_POST['prfx_nonce']) && wp_verify_nonce($_POST['prfx_nonce'], basename(__FILE__))) ? 'true' : 'false';
  
   if ($is_autosave || $is_revision || !$is_valid_nonce) {
-      return;
+    return;
   }
    
   if(isset($_POST['meta-box-text'])) {
