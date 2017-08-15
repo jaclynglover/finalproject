@@ -12,15 +12,15 @@ Text domain: trg-run-post-plugin
 add_action( 'init', 'trgrun_create_post_type' );
 function trgrun_create_post_type() {
 	$labels = array(
-		'name' 							=> __( 'Run' ),
-		'singular_name' 				=> __( 'Run' ),
-		'search_items'					=> __( 'Search Runs' ),
-		'all_items'						=> __( 'All Runs' ),
-		'edit_item'						=> __( 'Edit Run' ),
-		'update_item' 					=> __( 'Update Run' ),
-		'add_new_item' 					=> __( 'Add New Run' ),
-		'new_item_name' 				=> __( 'New Run' ),
-		'menu_name' 					=> __( 'Run' ),
+		'name' 			=> __( 'Run' ),
+		'singular_name' => __( 'Run' ),
+		'search_items'	=> __( 'Search Runs' ),
+		'all_items'		=> __( 'All Runs' ),
+		'edit_item'		=> __( 'Edit Run' ),
+		'update_item' 	=> __( 'Update Run' ),
+		'add_new_item' 	=> __( 'Add New Run' ),
+		'new_item_name' => __( 'New Run' ),
+		'menu_name' 	=> __( 'Run' ),
 	);
 
 	$args = array (
