@@ -16,7 +16,7 @@ function trgrun_create_post_type() {
 		'singular_name' => __( 'Run' ),
 		'search_items' => __( 'Search Runs' ),
 		'all_items' => __( 'All Runs' ),
-		'edit_item'	=> __( 'Edit Run' ),
+		'edit_item' => __( 'Edit Run' ),
 		'update_item' => __( 'Update Run' ),
 		'add_new_item' => __( 'Add New Run' ),
 		'new_item_name' => __( 'New Run' ),
